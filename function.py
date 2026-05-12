@@ -483,7 +483,7 @@ def function_librarian_add(answer_where, *args):
 # Видалення
 def function_librarian_delete(answer_where, *args):
     if answer_where == 'dictionary_library':
-        answer_del = args[0].strip().lower()
+        answer_del = args[0].strip()
         if answer_del not in data["dictionary_library"]:
             return 'Такої книги немає!'
         else:
@@ -493,8 +493,8 @@ def function_librarian_delete(answer_where, *args):
 
     elif answer_where == 'dictionary_genre':
         genre, name = args
-        genre = genre.strip().lower()
-        name = name.strip().lower()
+        genre = genre.strip()
+        name = name.strip()
 
         if genre not in data["dictionary_genre"]:
             return 'Такої жанру немає!'
@@ -517,7 +517,7 @@ def function_librarian_delete(answer_where, *args):
             return 'Логін видалено!'
 
     elif answer_where == 'dictionary_reader':
-        answer_del = args[0].strip().lower()
+        answer_del = args[0].strip()
         if answer_del not in data["dictionary_reader"]:
             return 'Такого читача немає!'
         else:

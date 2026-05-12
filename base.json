@@ -678,20 +678,6 @@
                     }
                 }
             }
-        },
-        "Фарбований лис": {
-            "author": "Іван Франко",
-            "genre": "Повість",
-            "editions": {
-                "default": {
-                    "2024": {
-                        "index": "999999",
-                        "language": "original",
-                        "binding": "тверда",
-                        "price": "350"
-                    }
-                }
-            }
         }
     },
     "dictionary_genre": {

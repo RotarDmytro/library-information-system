@@ -6,14 +6,27 @@ from tkinter import ttk, messagebox
 import tkinter as tk
 import function as fn
 from function import *
+import sys, os
 
-# УВАГА! Підключення функціоналу та умовної бази даних
+# УВАГА! Підключення функціоналу, орієнтування в файлах та умовної бази даних
 
 def get_data():
     return fn.data
 json_connect_base()
 json_a_d_c_base()
-
+ 
+def _get_icon_path():
+    if getattr(sys, 'frozen', False):
+        base_path = sys._MEIPASS
+    else:
+        base_path = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(base_path, 'book.ico')
+ 
+def _set_icon(window):
+    try:
+        window.iconbitmap(_get_icon_path())
+    except Exception:
+        pass
 
 # ПРИМІТКА. Створення інтерфейсу
 
@@ -24,6 +37,7 @@ class App:
     class _BaseWindow:
         def __init__(self, root):
             self.root = root
+            _set_icon(self.root)
             self.main_menu = tk.Menu(root)
             self.root.config(menu=self.main_menu)
 
@@ -69,6 +83,7 @@ class App:
     class Exit:
         def __init__(self, root):
             self.root = root
+            _set_icon(self.root)
             self.root.title("Вхід в систему")
             self.root.geometry("400x270")
             self.root.resizable(False, False)
@@ -620,6 +635,7 @@ class App:
     class Reader:
         def __init__(self, root):
             self.root = root
+            _set_icon(self.root)
             self.root.title("Головне меню читача")
             self.root.geometry("760x400")
             self.root.resizable(False, False)
@@ -795,14 +811,7 @@ class App:
 # Створення функції запуску
 def start():
     root = tb.Window(themename="flatly")
-    # Правильний шлях для PyInstaller
-    import sys, os
-    if getattr(sys, 'frozen', False):
-        base_path = sys._MEIPASS
-    else:
-        base_path = os.path.dirname(os.path.abspath(__file__))
-    icon_path = os.path.join(base_path, 'book.ico')
-    root.iconbitmap(icon_path)
+    _set_icon(root)
     app = App.Exit(root)
     root.mainloop()
 
