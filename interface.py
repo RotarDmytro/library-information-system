@@ -14,14 +14,14 @@ def get_data():
     return fn.data
 json_connect_base()
 json_a_d_c_base()
- 
+
 def _get_icon_path():
     if getattr(sys, 'frozen', False):
         base_path = sys._MEIPASS
     else:
         base_path = os.path.dirname(os.path.abspath(__file__))
     return os.path.join(base_path, 'book.ico')
- 
+
 def _set_icon(window):
     try:
         window.iconbitmap(_get_icon_path())

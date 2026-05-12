@@ -247,7 +247,7 @@ def function_librarian_find(name, author, genre, index, edition_type, year):
 # Блок №4.2. Бібліотекар "Картка читача"
 def function_librarian_card(reader_card):
     reader_card = reader_card.title().strip()
-    reader_card = reader_card.split(" ")
+    reader_card = reader_card.split("-")
     reader_card = '-'.join(reader_card)
 
     if reader_card in data["dictionary_reader"]:
@@ -404,7 +404,7 @@ def function_librarian_add(answer_where, *args):
         else:
             if login not in data["login_password"]:
                 data["login_password"][login] = {
-                    "password": password,
+                    "password": fast_hash(password),
                     "role": role,
                     "reader_name": reader_name
                 }
@@ -469,9 +469,9 @@ def function_librarian_add(answer_where, *args):
         name = name.strip().lower()
 
         if author not in data["dictionary_author"]:
-            data["dictionary_author"][author] = []
-
-        data["dictionary_author"][author].append(name)
+            data["dictionary_author"][author] = name
+        else:
+            pass  # автор вже є
 
         json_a_d_c_base()
         return "Додано успішно!"
