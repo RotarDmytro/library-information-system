@@ -526,7 +526,7 @@ def function_librarian_delete(answer_where, *args):
             return 'Читача видалено!'
 
     elif answer_where == 'dictionary_book':
-        answer_del = args[0].strip().lower()
+        answer_del = args[0].strip()
         if answer_del not in data["dictionary_book"]:
             return 'Такої книги немає!'
         else:
@@ -535,7 +535,7 @@ def function_librarian_delete(answer_where, *args):
             return 'Книгу видалено!'
 
     elif answer_where == 'dictionary_author':
-        answer_del = args[0].strip().lower()
+        answer_del = args[0].strip()
         if answer_del not in data["dictionary_author"]:
             return 'Такого автора немає!'
         else:

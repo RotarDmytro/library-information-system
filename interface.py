@@ -795,7 +795,14 @@ class App:
 # Створення функції запуску
 def start():
     root = tb.Window(themename="flatly")
-    root.iconbitmap("book.ico")
+    # Правильний шлях для PyInstaller
+    import sys, os
+    if getattr(sys, 'frozen', False):
+        base_path = sys._MEIPASS
+    else:
+        base_path = os.path.dirname(os.path.abspath(__file__))
+    icon_path = os.path.join(base_path, 'book.ico')
+    root.iconbitmap(icon_path)
     app = App.Exit(root)
     root.mainloop()
 
