@@ -1,0 +1,857 @@
+{
+    "dictionary_library": {
+        "Кобзар": {
+            "author": "Тарас Шевченко",
+            "genre": "Поезія",
+            "editions": {
+                "action": {
+                    "2016": {
+                        "binding": "тверда",
+                        "price": 300,
+                        "language": "original",
+                        "action": 0.1,
+                        "index": 137483
+                    },
+                    "2018": {
+                        "binding": "м'яка",
+                        "price": 305,
+                        "language": "original",
+                        "action": 0.15,
+                        "index": 137343
+                    },
+                    "2023": {
+                        "binding": "тверда",
+                        "price": 450,
+                        "language": "translate",
+                        "action": 0.25,
+                        "index": 143483
+                    }
+                },
+                "default": {
+                    "2016": {
+                        "binding": "тверда",
+                        "price": 300,
+                        "language": "original",
+                        "index": 137483
+                    },
+                    "2018": {
+                        "binding": "м'яка",
+                        "price": 305,
+                        "language": "original",
+                        "index": 137343
+                    },
+                    "2023": {
+                        "binding": "тверда",
+                        "price": 450,
+                        "language": "translate",
+                        "index": 143483
+                    }
+                },
+                "new": {
+                    "2018": {
+                        "binding": "м'яка",
+                        "price": 305,
+                        "language": "original",
+                        "index": 137343
+                    },
+                    "2023": {
+                        "binding": "тверда",
+                        "price": 450,
+                        "language": "translate",
+                        "index": 143483
+                    }
+                },
+                "hot": {
+                    "2018": {
+                        "binding": "м'яка",
+                        "price": 305,
+                        "language": "original",
+                        "index": 137343
+                    }
+                },
+                "accessories": {
+                    "Закладки": {
+                        "index": 234158
+                    }
+                }
+            }
+        },
+        "Лісова пісня": {
+            "author": "Леся Українка",
+            "genre": "Драма",
+            "editions": {
+                "action": {
+                    "2015": {
+                        "binding": "тверда",
+                        "price": 250,
+                        "language": "original",
+                        "action": 0.1,
+                        "index": 111001
+                    },
+                    "2019": {
+                        "binding": "м'яка",
+                        "price": 270,
+                        "language": "original",
+                        "action": 0.15,
+                        "index": 111002
+                    }
+                },
+                "default": {
+                    "2015": {
+                        "binding": "тверда",
+                        "price": 250,
+                        "language": "original",
+                        "index": 111001
+                    },
+                    "2019": {
+                        "binding": "м'яка",
+                        "price": 270,
+                        "language": "original",
+                        "index": 111002
+                    }
+                },
+                "new": {
+                    "2019": {
+                        "binding": "м'яка",
+                        "price": 270,
+                        "language": "original",
+                        "index": 111002
+                    }
+                },
+                "hot": {
+                    "2015": {
+                        "binding": "тверда",
+                        "price": 250,
+                        "language": "original",
+                        "index": 111001
+                    }
+                },
+                "accessories": {
+                    "Закладки": {
+                        "index": 200001
+                    }
+                }
+            }
+        },
+        "Тигролови": {
+            "author": "Іван Багряний",
+            "genre": "Роман",
+            "editions": {
+                "action": {
+                    "2017": {
+                        "binding": "тверда",
+                        "price": 320,
+                        "language": "original",
+                        "action": 0.2,
+                        "index": 111003
+                    }
+                },
+                "default": {
+                    "2017": {
+                        "binding": "тверда",
+                        "price": 320,
+                        "language": "original",
+                        "index": 111003
+                    }
+                },
+                "new": {
+                    "2017": {
+                        "binding": "тверда",
+                        "price": 320,
+                        "language": "original",
+                        "index": 111003
+                    }
+                },
+                "hot": {},
+                "accessories": {
+                    "Закладки": {
+                        "index": 200002
+                    }
+                }
+            }
+        },
+        "Місто": {
+            "author": "Валер'ян Підмогильний",
+            "genre": "Роман",
+            "editions": {
+                "action": {
+                    "2020": {
+                        "binding": "тверда",
+                        "price": 400,
+                        "language": "original",
+                        "action": 0.1,
+                        "index": 111004
+                    }
+                },
+                "default": {
+                    "2020": {
+                        "binding": "тверда",
+                        "price": 400,
+                        "language": "original",
+                        "index": 111004
+                    }
+                },
+                "new": {
+                    "2020": {
+                        "binding": "тверда",
+                        "price": 400,
+                        "language": "original",
+                        "index": 111004
+                    }
+                },
+                "hot": {
+                    "2020": {
+                        "binding": "тверда",
+                        "price": 400,
+                        "language": "original",
+                        "index": 111004
+                    }
+                },
+                "accessories": {
+                    "Закладки": {
+                        "index": 200003
+                    }
+                }
+            }
+        },
+        "Чорна рада": {
+            "author": "Пантелеймон Куліш",
+            "genre": "Історичний роман",
+            "editions": {
+                "action": {
+                    "2016": {
+                        "binding": "м'яка",
+                        "price": 290,
+                        "language": "original",
+                        "action": 0.1,
+                        "index": 111005
+                    }
+                },
+                "default": {
+                    "2016": {
+                        "binding": "м'яка",
+                        "price": 290,
+                        "language": "original",
+                        "index": 111005
+                    }
+                },
+                "new": {},
+                "hot": {},
+                "accessories": {
+                    "Закладки": {
+                        "index": 200004
+                    }
+                }
+            }
+        },
+        "Захар Беркут": {
+            "author": "Іван Франко",
+            "genre": "Повість",
+            "editions": {
+                "action": {
+                    "2018": {
+                        "binding": "тверда",
+                        "price": 310,
+                        "language": "original",
+                        "action": 0.2,
+                        "index": 111006
+                    }
+                },
+                "default": {
+                    "2018": {
+                        "binding": "тверда",
+                        "price": 310,
+                        "language": "original",
+                        "index": 111006
+                    }
+                },
+                "new": {
+                    "2018": {
+                        "binding": "тверда",
+                        "price": 310,
+                        "language": "original",
+                        "index": 111006
+                    }
+                },
+                "hot": {},
+                "accessories": {
+                    "Закладки": {
+                        "index": 200005
+                    }
+                }
+            }
+        },
+        "Гаррі Поттер і філософський камінь": {
+            "author": "Джоан Роулінг",
+            "genre": "Фентезі",
+            "editions": {
+                "action": {
+                    "2017": {
+                        "binding": "тверда",
+                        "price": 500,
+                        "language": "translate",
+                        "action": 0.2,
+                        "index": 111007
+                    }
+                },
+                "default": {
+                    "2017": {
+                        "binding": "тверда",
+                        "price": 500,
+                        "language": "translate",
+                        "index": 111007
+                    }
+                },
+                "new": {
+                    "2017": {
+                        "binding": "тверда",
+                        "price": 500,
+                        "language": "translate",
+                        "index": 111007
+                    }
+                },
+                "hot": {
+                    "2017": {
+                        "binding": "тверда",
+                        "price": 500,
+                        "language": "translate",
+                        "index": 111007
+                    }
+                },
+                "accessories": {
+                    "Закладки": {
+                        "index": 200006
+                    }
+                }
+            }
+        },
+        "1984": {
+            "author": "Джордж Орвелл",
+            "genre": "Антиутопія",
+            "editions": {
+                "action": {
+                    "2019": {
+                        "binding": "м'яка",
+                        "price": 350,
+                        "language": "translate",
+                        "action": 0.15,
+                        "index": 111008
+                    }
+                },
+                "default": {
+                    "2019": {
+                        "binding": "м'яка",
+                        "price": 350,
+                        "language": "translate",
+                        "index": 111008
+                    }
+                },
+                "new": {
+                    "2019": {
+                        "binding": "м'яка",
+                        "price": 350,
+                        "language": "translate",
+                        "index": 111008
+                    }
+                },
+                "hot": {},
+                "accessories": {
+                    "Закладки": {
+                        "index": 200007
+                    }
+                }
+            }
+        },
+        "Маленький принц": {
+            "author": "Антуан де Сент-Екзюпері",
+            "genre": "Казка",
+            "editions": {
+                "action": {
+                    "2021": {
+                        "binding": "тверда",
+                        "price": 280,
+                        "language": "translate",
+                        "action": 0.1,
+                        "index": 111009
+                    }
+                },
+                "default": {
+                    "2021": {
+                        "binding": "тверда",
+                        "price": 280,
+                        "language": "translate",
+                        "index": 111009
+                    }
+                },
+                "new": {
+                    "2021": {
+                        "binding": "тверда",
+                        "price": 280,
+                        "language": "translate",
+                        "index": 111009
+                    }
+                },
+                "hot": {
+                    "2021": {
+                        "binding": "тверда",
+                        "price": 280,
+                        "language": "translate",
+                        "index": 111009
+                    }
+                },
+                "accessories": {
+                    "Закладки": {
+                        "index": 200008
+                    }
+                }
+            }
+        },
+        "Алхімік": {
+            "author": "Пауло Коельйо",
+            "genre": "Роман",
+            "editions": {
+                "action": {
+                    "2016": {
+                        "binding": "м'яка",
+                        "price": 300,
+                        "language": "translate",
+                        "action": 0.2,
+                        "index": 111010
+                    }
+                },
+                "default": {
+                    "2016": {
+                        "binding": "м'яка",
+                        "price": 300,
+                        "language": "translate",
+                        "index": 111010
+                    }
+                },
+                "new": {},
+                "hot": {
+                    "2016": {
+                        "binding": "м'яка",
+                        "price": 300,
+                        "language": "translate",
+                        "index": 111010
+                    }
+                },
+                "accessories": {
+                    "Закладки": {
+                        "index": 200009
+                    }
+                }
+            }
+        },
+        "Володар перснів": {
+            "author": "Джон Р. Р. Толкін",
+            "genre": "Фентезі",
+            "editions": {
+                "action": {
+                    "2022": {
+                        "binding": "тверда",
+                        "price": 900,
+                        "language": "translate",
+                        "action": 0.25,
+                        "index": 111011
+                    }
+                },
+                "default": {
+                    "2022": {
+                        "binding": "тверда",
+                        "price": 900,
+                        "language": "translate",
+                        "index": 111011
+                    }
+                },
+                "new": {
+                    "2022": {
+                        "binding": "тверда",
+                        "price": 900,
+                        "language": "translate",
+                        "index": 111011
+                    }
+                },
+                "hot": {
+                    "2022": {
+                        "binding": "тверда",
+                        "price": 900,
+                        "language": "translate",
+                        "index": 111011
+                    }
+                },
+                "accessories": {
+                    "Закладки": {
+                        "index": 200010
+                    }
+                }
+            }
+        },
+        "Дюна": {
+            "author": "Френк Герберт",
+            "genre": "Наукова фантастика",
+            "editions": {
+                "action": {
+                    "2021": {
+                        "binding": "тверда",
+                        "price": 600,
+                        "language": "translate",
+                        "action": 0.2,
+                        "index": 111012
+                    }
+                },
+                "default": {
+                    "2021": {
+                        "binding": "тверда",
+                        "price": 600,
+                        "language": "translate",
+                        "index": 111012
+                    }
+                },
+                "new": {
+                    "2021": {
+                        "binding": "тверда",
+                        "price": 600,
+                        "language": "translate",
+                        "index": 111012
+                    }
+                },
+                "hot": {
+                    "2021": {
+                        "binding": "тверда",
+                        "price": 600,
+                        "language": "translate",
+                        "index": 111012
+                    }
+                },
+                "accessories": {
+                    "Закладки": {
+                        "index": 200011
+                    }
+                }
+            }
+        },
+        "Гра престолів": {
+            "author": "Джордж Р. Р. Мартін",
+            "genre": "Фентезі",
+            "editions": {
+                "action": {
+                    "2020": {
+                        "binding": "тверда",
+                        "price": 750,
+                        "language": "translate",
+                        "action": 0.15,
+                        "index": 111013
+                    }
+                },
+                "default": {
+                    "2020": {
+                        "binding": "тверда",
+                        "price": 750,
+                        "language": "translate",
+                        "index": 111013
+                    }
+                },
+                "new": {
+                    "2020": {
+                        "binding": "тверда",
+                        "price": 750,
+                        "language": "translate",
+                        "index": 111013
+                    }
+                },
+                "hot": {},
+                "accessories": {
+                    "Закладки": {
+                        "index": 200012
+                    }
+                }
+            }
+        },
+        "Портрет Доріана Грея": {
+            "author": "Оскар Вайльд",
+            "genre": "Роман",
+            "editions": {
+                "action": {
+                    "2018": {
+                        "binding": "м'яка",
+                        "price": 330,
+                        "language": "translate",
+                        "action": 0.1,
+                        "index": 111014
+                    }
+                },
+                "default": {
+                    "2018": {
+                        "binding": "м'яка",
+                        "price": 330,
+                        "language": "translate",
+                        "index": 111014
+                    }
+                },
+                "new": {},
+                "hot": {
+                    "2018": {
+                        "binding": "м'яка",
+                        "price": 330,
+                        "language": "translate",
+                        "index": 111014
+                    }
+                },
+                "accessories": {
+                    "Закладки": {
+                        "index": 200013
+                    }
+                }
+            }
+        },
+        "Шерлок Холмс": {
+            "author": "Артур Конан Дойл",
+            "genre": "Детектив",
+            "editions": {
+                "action": {
+                    "2019": {
+                        "binding": "тверда",
+                        "price": 420,
+                        "language": "translate",
+                        "action": 0.2,
+                        "index": 111015
+                    }
+                },
+                "default": {
+                    "2019": {
+                        "binding": "тверда",
+                        "price": 420,
+                        "language": "translate",
+                        "index": 111015
+                    }
+                },
+                "new": {
+                    "2019": {
+                        "binding": "тверда",
+                        "price": 420,
+                        "language": "translate",
+                        "index": 111015
+                    }
+                },
+                "hot": {
+                    "2019": {
+                        "binding": "тверда",
+                        "price": 420,
+                        "language": "translate",
+                        "index": 111015
+                    }
+                },
+                "accessories": {
+                    "Закладки": {
+                        "index": 200014
+                    }
+                }
+            }
+        },
+        "Пригоди Тома Сойєра": {
+            "author": "Марк Твен",
+            "genre": "Пригоди",
+            "editions": {
+                "action": {
+                    "2016": {
+                        "binding": "м'яка",
+                        "price": 260,
+                        "language": "translate",
+                        "action": 0.15,
+                        "index": 111016
+                    }
+                },
+                "default": {
+                    "2016": {
+                        "binding": "м'яка",
+                        "price": 260,
+                        "language": "translate",
+                        "index": 111016
+                    }
+                },
+                "new": {},
+                "hot": {},
+                "accessories": {
+                    "Закладки": {
+                        "index": 200015
+                    }
+                }
+            }
+        },
+        "Фарбований лис": {
+            "author": "Іван Франко",
+            "genre": "Повість",
+            "editions": {
+                "default": {
+                    "2024": {
+                        "index": "999999",
+                        "language": "original",
+                        "binding": "тверда",
+                        "price": "350"
+                    }
+                }
+            }
+        }
+    },
+    "dictionary_genre": {
+        "Фентезі": [
+            "Гаррі Поттер і філософський камінь",
+            "Володар перснів",
+            "Гра престолів"
+        ],
+        "Наукова фантастика": [
+            "Дюна",
+            "Гра Ендера"
+        ],
+        "Детектив": [
+            "Шерлок Холмс",
+            "Код да Вінчі"
+        ],
+        "Класика": [
+            "Злочин і кара",
+            "Війна і мир"
+        ],
+        "Роман": [
+            "Алхімік",
+            "Місто",
+            "Гордість і упередження",
+            "Тигролови",
+            "Портрет Доріана Грея"
+        ],
+        "Жахи": [
+            "Сяйво",
+            "Доктор Сон"
+        ],
+        "Пригоди": [
+            "Острів скарбів",
+            "Пригоди Тома Сойєра"
+        ],
+        "Філософія": [
+            "Так казав Заратустра"
+        ],
+        "Антиутопія": [
+            "1984"
+        ],
+        "Драма": [
+            "Лісова пісня"
+        ],
+        "Поезія": [
+            "Кобзар"
+        ],
+        "Казка": [
+            "Маленький принц"
+        ],
+        "Повість": [
+            "Захар Беркут"
+        ],
+        "Історичний роман": [
+            "Чорна рада"
+        ]
+    },
+    "login_password": {
+        "rotardima": {
+            "password": "45cb524b12188383d9e1b6d6ac003c340f1997f028692888323a9712b786dac8",
+            "role": "librarian",
+            "reader_name": "Дмитро-Ротар-Андрійович"
+        },
+        "rotaranna": {
+            "password": "67bdf756cc7a4486af2339d1fdad4c5d1a6d98bf9361e05807fc7bed14aa0c77",
+            "role": "reader",
+            "reader_name": "Олег-Андрієвський-Кирилович"
+        },
+        "ivan123": {
+            "password": "6c84b1086e558a0b9dad7623979f6ddf9f337084f281d9b3a07273d04b425344",
+            "role": "reader",
+            "reader_name": "Іван-Петренко-Олегович"
+        },
+        "maria321": {
+            "password": "1eb628905ab0b4dd6ff03b9112be93a1bbf6e752a401202f7daf381a248f4576",
+            "role": "reader",
+            "reader_name": "Марія-Коваль-Ігорівна"
+        },
+        "adminlib": {
+            "password": "ab3b9237a828d7851e685151dca17675fc4e1d077c58d6346e5987e132836aed",
+            "role": "librarian",
+            "reader_name": "Адміністратор-Бібліотеки"
+        }
+    },
+    "dictionary_reader": {
+        "Дмитро-Ротар-Андрійович": {
+            "limit": 3,
+            "login": "rotardima",
+            "tel": "+380974587323",
+            "ticket_number": "1",
+            "date_of_birth": "03.09.2000",
+            "mail": "rotardd@ukr.net"
+        },
+        "Олег-Андрієвський-Кирилович": {
+            "limit": 2,
+            "login": "rotaranna",
+            "tel": "+380674289823",
+            "ticket_number": "2",
+            "date_of_birth": "28.01.2004",
+            "mail": "andytdk@ukr.net"
+        },
+        "Іван-Петренко-Олегович": {
+            "limit": 4,
+            "login": "ivan123",
+            "tel": "+380931112233",
+            "ticket_number": "3",
+            "date_of_birth": "15.05.1998",
+            "mail": "ivan.petrenko@gmail.com"
+        },
+        "Марія-Коваль-Ігорівна": {
+            "limit": 2,
+            "login": "maria321",
+            "tel": "+380671234567",
+            "ticket_number": "4",
+            "date_of_birth": "22.11.2002",
+            "mail": "maria.koval@gmail.com"
+        },
+        "Адміністратор-Бібліотеки": {
+            "limit": 10,
+            "login": "adminlib",
+            "tel": "+380500000000",
+            "ticket_number": "5",
+            "date_of_birth": "01.01.1990",
+            "mail": "admin@library.ua"
+        }
+    },
+    "dictionary_book": {
+        "Кобзар": "Тарас Шевченко",
+        "Кайдашева сім'я": "Іван Нечуй-Левицький",
+        "Тигролови": "Іван Багряний",
+        "Холодний яр": "Юрій Горліс-Горський",
+        "Лісова пісня": "Леся Українка",
+        "Місто": "Валер'ян Підмогильний",
+        "Захар Беркут": "Іван Франко",
+        "Чорна рада": "Пантелеймон Куліш"
+    },
+    "dictionary_author": {
+        "Тарас Шевченко": [
+            "Кобзар"
+        ],
+        "Іван Нечуй-Левицький": [
+            "Кайдашева сім'я"
+        ],
+        "Іван Багряний": [
+            "Тигролови"
+        ],
+        "Юрій Горліс-Горський": [
+            "Холодний яр"
+        ],
+        "Леся Українка": [
+            "Лісова пісня"
+        ],
+        "Валер'ян Підмогильний": [
+            "Місто"
+        ],
+        "Іван Франко": [
+            "Захар Беркут"
+        ],
+        "Пантелеймон Куліш": [
+            "Чорна рада"
+        ]
+    }
+}
