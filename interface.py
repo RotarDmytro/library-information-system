@@ -107,16 +107,27 @@ class App:
             self.btn_cancel = ttk.Button(self.root, text="Відміна", width=7, command=self.root.destroy)
             self.btn_cancel.place(relx=0.55, rely=0.8)
 
-        # Функція для малювання дочірнього вікна згідно вибору ролі
+        # ПОЯСНЕННЯ. Функція для малювання дочірнього вікна згідно вибору ролі
 
         def do_login(self):
             login = self.ent_login.get().strip().lower()
             password = self.ent_password.get().strip()
 
+            selected = self.listbox.curselection()
+            if not selected:
+                messagebox.showerror("Помилка", "Оберіть роль зі списку")
+                return
+            selected_label = self.listbox.get(selected[0])
+            selected_role = "librarian" if selected_label == "Бібліотекар" else "reader"
+
             role, msg = function_exit(login, password)
 
             if role is None:
                 messagebox.showerror("Помилка", msg)
+                return
+
+            if role != selected_role:
+                messagebox.showerror("Помилка", "Невірна роль для цього акаунту")
                 return
 
             self.root.withdraw()          
@@ -133,17 +144,17 @@ class App:
         def __init__(self, root):
             self.root = root
             self.root.title("Головне меню бібліотекаря")
-            self.root.geometry("770x400")
+            self.root.geometry("770x440")
             self.root.resizable(False, False)
             super().__init__(root)
 
             self.frame_up = ttk.Frame(self.root, width=560, height=40)
             self.frame_up.place(x=100, y=2)
-            ttk.Label(self.frame_up, text="Пошук:").place(x=10, y=8)
+            ttk.Label(self.frame_up, text="Пошук:").place(x=10, y=10)
             self.entry_search = ttk.Entry(self.frame_up, width=60)
             self.entry_search.place(x=80, y=8)
             self.button_search = ttk.Button(self.frame_up, text="Знайти", width=10, command=self.do_search)
-            self.button_search.place(x=460, y=6)
+            self.button_search.place(x=460, y=8)
 
             self.frame_tree = ttk.Frame(self.root, width=560, height=330, relief='groove', borderwidth=2)
             self.frame_tree.place(x=14, y=50)
@@ -168,8 +179,8 @@ class App:
             self.scroll_y.pack(side='right', fill='y')
             self.tree.pack(side='left', fill='both', expand=True)
 
-            self.frame_down = ttk.Frame(self.root, width=707, height=27, relief='groove', borderwidth=2)
-            self.frame_down.place(x=16, y=370)
+            self.frame_down = ttk.Frame(self.root, width=720, height=27, relief='groove', borderwidth=2)
+            self.frame_down.place(x=16, y=380)
             self.label_count = ttk.Label(self.frame_down, text="Всього книг: ")
             self.label_count.place(x=10, y=0)
             self.label_cor_count = ttk.Label(self.frame_down, text="0")
@@ -208,7 +219,7 @@ class App:
         def __init__(self, root):
             self.root = root
             self.root.title("Картка читача")
-            self.root.geometry("980x400")
+            self.root.geometry("980x440")
             self.root.resizable(False, False)
             super().__init__(root)
 
@@ -222,17 +233,18 @@ class App:
 
             self.frame_tree = ttk.Frame(self.root, width=960, height=330, relief='groove', borderwidth=2)
             self.frame_tree.place(x=14, y=50)
-            self.column = ('№', "Ім'я", 'Прізвище', 'Квиток', 'Телефон', 'Дата народження', 'Ел. пошта', 'Видано', 'Повернуто', 'Заборгованість')
+            self.column = ('№', "Ім'я", 'Прізвище', 'По батькові', 'Квиток', 'Телефон', 'Дата народження', 'Ел. пошта', 'Видано', 'Повернуто', 'Заборгованість')
             self.tree = ttk.Treeview(self.frame_tree, columns=self.column, show='headings', height=14)
             self.tree.column('№', width=30, anchor='center', stretch=False)
-            self.tree.column("Ім'я", width=100, anchor='center', stretch=False)
-            self.tree.column('Прізвище', width=100, anchor='center', stretch=False)
-            self.tree.column('Квиток', width=80,  anchor='center', stretch=False)
+            self.tree.column("Ім'я", width=90, anchor='center', stretch=False)
+            self.tree.column('Прізвище', width=90, anchor='center', stretch=False)
+            self.tree.column('По батькові', width=100, anchor='center', stretch=False)
+            self.tree.column('Квиток', width=55,  anchor='center', stretch=False)
             self.tree.column('Телефон', width=100, anchor='center', stretch=False)
             self.tree.column('Дата народження', width=110, anchor='center', stretch=False)
             self.tree.column('Ел. пошта', width=150, anchor='center', stretch=False)
-            self.tree.column('Видано', width=80,  anchor='center', stretch=False)
-            self.tree.column('Повернуто', width=80,  anchor='center', stretch=False)
+            self.tree.column('Видано', width=55,  anchor='center', stretch=False)
+            self.tree.column('Повернуто', width=65,  anchor='center', stretch=False)
             self.tree.column('Заборгованість', width=100, anchor='center', stretch=False)
 
             for col in self.column:
@@ -244,14 +256,14 @@ class App:
             self.scroll_y.pack(side='right', fill='y')
             self.tree.pack(side='left', fill='both', expand=True)
 
-            self.frame_down = ttk.Frame(self.root, width=953, height=27, relief='groove', borderwidth=2)
-            self.frame_down.place(x=14, y=370)
+            self.frame_down = ttk.Frame(self.root, width=955, height=27, relief='groove', borderwidth=2)
+            self.frame_down.place(x=14, y=380)
             self.label_count = ttk.Label(self.frame_down, text="Всього читачів: ")
             self.label_count.place(x=10, y=0)
             self.label_cor_count = ttk.Label(self.frame_down, text="0")
             self.label_cor_count.place(x=120, y=0)
             self.label_role = ttk.Label(self.frame_down, text="Роль: Бібліотекар")
-            self.label_role.place(x=820, y=0)
+            self.label_role.place(x=800, y=0)
 
             self.load_tree()
 
@@ -261,12 +273,17 @@ class App:
             i = 1
             for pib, rd in fn.data["dictionary_reader"].items():
                 parts = pib.split("-")
-                name    = parts[0] if len(parts) > 0 else ""
+
+                # ПОЯСНЕННЯ. Робота з тернарними операторами
+
+                name = parts[0] if len(parts) > 0 else ""
                 surname = parts[1] if len(parts) > 1 else ""
+                father = parts[2] if len(parts) > 2 else ""
+
                 if filter_text and filter_text.lower() not in pib.lower():
                     continue
                 self.tree.insert('', 'end', values=(
-                    i, name, surname,
+                    i, name, surname, father,
                     rd.get('ticket_number', ''),
                     rd.get('tel', ''),
                     rd.get('date_of_birth', ''),
@@ -285,7 +302,7 @@ class App:
         def __init__(self, root):
             self.root = root
             self.root.title("Реєстрація читача")
-            self.root.geometry("700x500")
+            self.root.geometry("700x600")
             self.root.resizable(False, False)
             super().__init__(root)
 
@@ -293,9 +310,10 @@ class App:
             ttk.Label(self.root, text="Квиток:").place(x=70, y=80)
             ttk.Label(self.root, text="Ім'я:").place(x=70, y=130)
             ttk.Label(self.root, text="Прізвище:").place(x=70, y=180)
-            ttk.Label(self.root, text="Ел. пошта:").place(x=70, y=230)
-            ttk.Label(self.root, text="Телефон:").place(x=70, y=280)
-            ttk.Label(self.root, text="Дата народження:").place(x=70, y=330)
+            ttk.Label(self.root, text="По батькові:").place(x=70, y=230)
+            ttk.Label(self.root, text="Ел. пошта:").place(x=70, y=280)
+            ttk.Label(self.root, text="Телефон:").place(x=70, y=330)
+            ttk.Label(self.root, text="Дата народження:").place(x=70, y=380)
             ttk.Label(self.root, text="Логін:").place(x=400, y=30)
             ttk.Label(self.root, text="Пароль:").place(x=400, y=80)
             ttk.Label(self.root, text="Підтвердження:").place(x=400, y=130)
@@ -311,7 +329,7 @@ class App:
             self.label_cor_pov.place(x=105, y=50)
             ttk.Label(self.frame_info, text="Заборгованість:").place(x=25, y=75)
             self.label_cor_zab = ttk.Label(self.frame_info, text="0")
-            self.label_cor_zab.place(x=130, y=75)
+            self.label_cor_zab.place(x=140, y=75)
 
             self.ent_number = ttk.Entry(self.root, width=20)
             self.ent_number.place(x=205, y=30)
@@ -321,12 +339,14 @@ class App:
             self.ent_name.place(x=205, y=130)
             self.ent_surname = ttk.Entry(self.root, width=20)
             self.ent_surname.place(x=205, y=180)
+            self.ent_father = ttk.Entry(self.root, width=20)
+            self.ent_father.place(x=205, y=230)
             self.ent_post = ttk.Entry(self.root, width=20, foreground='grey')
-            self.ent_post.place(x=205, y=230)
+            self.ent_post.place(x=205, y=280)
             self.ent_phone = ttk.Entry(self.root, width=20, foreground='grey')
-            self.ent_phone.place(x=205, y=280)
+            self.ent_phone.place(x=205, y=330)
             self.ent_birthdate = ttk.Entry(self.root, width=20, foreground='grey')
-            self.ent_birthdate.place(x=205, y=330)
+            self.ent_birthdate.place(x=205, y=380)
             self.ent_login = ttk.Entry(self.root, width=20)
             self.ent_login.place(x=520, y=30)
             self.ent_password = ttk.Entry(self.root, width=20, show="*")
@@ -335,18 +355,18 @@ class App:
             self.ent_confirm_password.place(x=520, y=130)
 
             self.btn_ok = ttk.Button(self.root, text="Зареєструвати", width=15, command=self.do_register)
-            self.btn_ok.place(x=250, y=400)
+            self.btn_ok.place(x=250, y=450)
             self.btn_cancel = ttk.Button(self.root, text="Відміна", width=10, command=self.root.destroy)
-            self.btn_cancel.place(x=400, y=400)
+            self.btn_cancel.place(x=400, y=450)
 
             self.frame_down = ttk.Frame(self.root, width=670, height=27, relief='groove', borderwidth=2)
-            self.frame_down.place(x=14, y=460)
+            self.frame_down.place(x=14, y=530)
             self.label_count = ttk.Label(self.frame_down, text="Всього читачів: ")
             self.label_count.place(x=10, y=0)
             self.label_cor_count = ttk.Label(self.frame_down, text=str(len(fn.data["dictionary_reader"])))
             self.label_cor_count.place(x=120, y=0)
             self.label_role = ttk.Label(self.frame_down, text="Роль: Бібліотекар")
-            self.label_role.place(x=540, y=0)
+            self.label_role.place(x=530, y=0)
 
             self.ent_post.bind('<FocusIn>',  self.on_entry_click_post)
             self.ent_post.bind('<FocusOut>', self.on_focusout_post)
@@ -364,7 +384,7 @@ class App:
             msg = function_librarian_register_reader(
                 self.ent_name.get().strip(),
                 self.ent_surname.get().strip(),
-                self.ent_number.get().strip(),
+                self.ent_father.get().strip(),
                 self.ent_post.get().strip(),
                 self.ent_phone.get().strip(),
                 self.ent_birthdate.get().strip(),
@@ -418,7 +438,7 @@ class App:
         def __init__(self, root):
             self.root = root
             self.root.title("Додавання книги")
-            self.root.geometry("760x400")
+            self.root.geometry("760x440")
             self.root.resizable(False, False)
             super().__init__(root)
 
@@ -494,34 +514,36 @@ class App:
         def __init__(self, root):
             self.root = root
             self.root.title("Видалення книги")
-            self.root.geometry("760x200")
+            self.root.geometry("760x290")
             self.root.resizable(False, False)
             super().__init__(root)
 
-            self.frame_main = ttk.Frame(self.root, width=740, height=150, relief='groove', borderwidth=2)
+            self.frame_main = ttk.Frame(self.root, width=740, height=190, relief='groove', borderwidth=2)
             self.frame_main.place(x=10, y=10)
 
             ttk.Label(self.frame_main, text="Видалити з:").place(x=10, y=10)
-            targets = ['dictionary_library', 'dictionary_genre', 'login_password',
-                       'dictionary_reader', 'dictionary_book', 'dictionary_author']
+            targets = [
+                'dictionary_library', 'dictionary_genre', 'login_password',
+                'dictionary_reader', 'dictionary_book', 'dictionary_author'
+            ]
             self.combo_target = ttk.Combobox(self.frame_main, values=targets, state="readonly", width=27)
             self.combo_target.current(0)
             self.combo_target.place(x=120, y=10)
 
-            ttk.Label(self.frame_main, text="Значення 1:").place(x=10, y=45)
+            ttk.Label(self.frame_main, text="Значення 1:").place(x=10, y=65)
             self.entry_val1 = ttk.Entry(self.frame_main, width=30)
-            self.entry_val1.place(x=120, y=45)
+            self.entry_val1.place(x=120, y=65)
 
-            ttk.Label(self.frame_main, text="Значення 2:").place(x=10, y=80)
+            ttk.Label(self.frame_main, text="Значення 2:").place(x=10, y=100)
             self.entry_val2 = ttk.Entry(self.frame_main, width=30)
-            self.entry_val2.place(x=120, y=80)
+            self.entry_val2.place(x=120, y=100)
             ttk.Label(self.frame_main, text="(тільки для dictionary_genre: жанр + назва книги)", foreground='grey').place(x=380, y=80)
 
-            ttk.Button(self.frame_main, text="Видалити", width=12, command=self.do_delete).place(x=120, y=115)
-            ttk.Button(self.frame_main, text="Відміна",  width=10, command=self.root.destroy).place(x=280, y=115)
+            ttk.Button(self.frame_main, text="Видалити", width=12, command=self.do_delete).place(x=120, y=145)
+            ttk.Button(self.frame_main, text="Відміна",  width=10, command=self.root.destroy).place(x=280, y=145)
 
             self.frame_down = ttk.Frame(self.root, width=740, height=27, relief='groove', borderwidth=2)
-            self.frame_down.place(x=10, y=168)
+            self.frame_down.place(x=10, y=230)
             self.label_role = ttk.Label(self.frame_down, text="Роль: Бібліотекар")
             self.label_role.place(x=610, y=0)
 
@@ -547,7 +569,7 @@ class App:
         def __init__(self, root):
             self.root = root
             self.root.title("Видача книги")
-            self.root.geometry("760x250")
+            self.root.geometry("760x310")
             self.root.resizable(False, False)
             super().__init__(root)
 
@@ -570,9 +592,9 @@ class App:
             ttk.Button(self.frame_main, text="Відміна", width=10, command=self.root.destroy).place(x=300, y=165)
 
             self.frame_down = ttk.Frame(self.root, width=740, height=27, relief='groove', borderwidth=2)
-            self.frame_down.place(x=10, y=218)
+            self.frame_down.place(x=10, y=250)
             self.label_role = ttk.Label(self.frame_down, text="Роль: Бібліотекар")
-            self.label_role.place(x=610, y=0)
+            self.label_role.place(x=600, y=0)
 
         def do_issue(self):
             msg = function_librarian_issue(
@@ -592,7 +614,7 @@ class App:
         def __init__(self, root):
             self.root = root
             self.root.title("Видані екземпляри")
-            self.root.geometry("660x400")
+            self.root.geometry("660x460")
             self.root.resizable(False, False)
             super().__init__(root)
 
@@ -615,8 +637,8 @@ class App:
             self.scroll_y.pack(side='right', fill='y')
             self.tree.pack(side='left', fill='both', expand=True)
 
-            self.frame_down = ttk.Frame(self.root, width=740, height=27, relief='groove', borderwidth=2)
-            self.frame_down.place(x=8, y=368)
+            self.frame_down = ttk.Frame(self.root, width=630, height=27, relief='groove', borderwidth=2)
+            self.frame_down.place(x=10, y=390)
             self.label_role = ttk.Label(self.frame_down, text="Роль: Бібліотекар")
             self.label_role.place(x=500, y=0)
 
@@ -637,7 +659,7 @@ class App:
             self.root = root
             _set_icon(self.root)
             self.root.title("Головне меню читача")
-            self.root.geometry("760x400")
+            self.root.geometry("730x425")
             self.root.resizable(False, False)
 
             self.main_menu = tk.Menu(root)
@@ -673,9 +695,9 @@ class App:
             self.scroll_y.pack(side='right', fill='y')
             self.tree.pack(side='left', fill='both', expand=True)
 
-            self.frame_down = ttk.Frame(self.root, width=730, height=26, relief='groove', borderwidth=2)
+            self.frame_down = ttk.Frame(self.root, width=700, height=27, relief='groove', borderwidth=2)
             self.frame_down.place(x=14, y=368)
-            ttk.Label(self.frame_down, text="Роль: Читач").place(x=620, y=0)
+            ttk.Label(self.frame_down, text="Роль: Читач").place(x=580, y=0)
 
             json_connect_base()
             self.load_tree()
@@ -706,7 +728,7 @@ class App:
             entry = ttk.Entry(top, width=30)
             entry.place(x=130, y=20)
             result_label = ttk.Label(top, text="", wraplength=360)
-            result_label.place(x=20, y=100)
+            result_label.place(x=20, y=113)
             def do_search():
                 res = function_reader_quick_search(entry.get().strip())
                 result_label.config(text=res)
@@ -717,7 +739,7 @@ class App:
         def open_by_author(self):
             top = tk.Toplevel(self.root)
             top.title("Пошук за автором")
-            top.geometry("400x200")
+            top.geometry("400x230")
             top.resizable(False, False)
             ttk.Label(top, text="Автор:").place(x=20, y=20)
             entry_author = ttk.Entry(top, width=30)
@@ -726,31 +748,31 @@ class App:
             entry_year = ttk.Entry(top, width=30)
             entry_year.place(x=130, y=75)
             result_label = ttk.Label(top, text="", wraplength=360)
-            result_label.place(x=20, y=130)
+            result_label.place(x=20, y=170)
             def do_search():
                 res = function_reader_by_genre(entry_author.get().strip(), entry_year.get().strip())
                 result_label.config(text=str(res))
-            ttk.Button(top, text="Знайти", command=do_search).place(x=130, y=105)
+            ttk.Button(top, text="Знайти", command=do_search).place(x=130, y=125)
 
         # ПРИМІТКА. Пошук за типом
 
         def open_by_type(self):
             top = tk.Toplevel(self.root)
             top.title("Пошук за типом")
-            top.geometry("400x220")
+            top.geometry("400x250")
             top.resizable(False, False)
             ttk.Label(top, text="Тип:").place(x=20, y=20)
             combo_type = ttk.Combobox(top, values=["default", "action", "new", "hot"], state="readonly", width=27)
             combo_type.current(0)
             combo_type.place(x=130, y=20)
-            ttk.Label(top, text="Назва книги:").place(x=20, y=55)
+            ttk.Label(top, text="Назва книги:").place(x=20, y=70)
             entry_book = ttk.Entry(top, width=30)
-            entry_book.place(x=130, y=55)
+            entry_book.place(x=130, y=70)
             ttk.Label(top, text="Рік видання:").place(x=20, y=110)
             entry_year = ttk.Entry(top, width=30)
             entry_year.place(x=130, y=110)
             result_label = ttk.Label(top, text="", wraplength=360)
-            result_label.place(x=20, y=145)
+            result_label.place(x=20, y=160)
             def do_search():
                 res = function_reader_by_type(combo_type.get(), entry_book.get().strip(), entry_year.get().strip())
                 result_label.config(text=str(res))
@@ -767,11 +789,11 @@ class App:
             entry = ttk.Entry(top, width=30)
             entry.place(x=130, y=30)
             result_label = ttk.Label(top, text="", wraplength=360)
-            result_label.place(x=20, y=80)
+            result_label.place(x=20, y=110)
             def do_search():
                 res = function_reader_by_index(entry.get().strip())
                 result_label.config(text=str(res))
-            ttk.Button(top, text="Знайти", command=do_search).place(x=130, y=60)
+            ttk.Button(top, text="Знайти", command=do_search).place(x=130, y=80)
 
         # ПРИМІТКА. Аксесуари
 
@@ -784,21 +806,30 @@ class App:
             entry = ttk.Entry(top, width=30)
             entry.place(x=130, y=30)
             result_label = ttk.Label(top, text="", wraplength=360)
-            result_label.place(x=20, y=80)
+            result_label.place(x=20, y=110)
             def do_search():
                 res = function_reader_accessories(entry.get().strip())
                 result_label.config(text=str(res))
-            ttk.Button(top, text="Знайти", command=do_search).place(x=130, y=50)
+            ttk.Button(top, text="Знайти", command=do_search).place(x=130, y=80)
 
         # ПРИМІТКА. Повернення книги
 
         def open_return(self):
             top = tk.Toplevel(self.root)
             top.title("Повернення книги")
-            top.geometry("400x150")
+            top.geometry("420x150")
             top.resizable(False, False)
-            result_label = ttk.Label(top, text="", wraplength=360)
-            result_label.place(x=20, y=70)
+            result_label = ttk.Label(top, text="", wraplength=380)
+            result_label.place(x=20, y=100)
+
+            # Одразу показуємо інформацію про видану книгу
+            issued = fn.data.get("issued_books", [])
+            info = next((r for r in issued if r.get("reader") == fn.reader_name), None)
+            if info:
+                result_label.config(text=f"Книга: {info['book']}  |  Повернути до: {info['return_date']}")
+            else:
+                result_label.config(text="Немає виданої книги")
+
             def do_return():
                 res = function_reader_return(False)
                 result_label.config(text=str(res))
@@ -806,7 +837,7 @@ class App:
                 res = function_reader_return(True)
                 result_label.config(text=str(res))
             ttk.Button(top, text="Повернути", width=14, command=do_return).place(x=50, y=45)
-            ttk.Button(top, text="Продовжити (+3 міс)", width=18, command=do_extend).place(x=200, y=45)
+            ttk.Button(top, text="Продовжити (+3 міс)", width=20, command=do_extend).place(x=200, y=45)
 
 # Створення функції запуску
 def start():

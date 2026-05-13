@@ -35,6 +35,8 @@ def function_reader_quick_search(request_answer_book):
 def function_reader_by_genre(request_5, request_8):
     if request_5 in data["dictionary_author"]:
         request_name = data["dictionary_author"][request_5]
+        if isinstance(request_name, list):
+            request_name = request_name[0] if request_name else ''
         dictionary_my.update({'name': request_name})
 
         available_years = list(data["dictionary_library"][request_name]["editions"]["default"].keys())
@@ -129,23 +131,38 @@ def function_reader_by_index(request_index):
 
 
 def function_reader_return(extend):
-    global issue_date, return_date, day, month, year
+    global reader_name
 
-    if issue_date == "" or return_date == "":
+    # Шукаємо видану книгу поточного читача в JSON
+    issued = data.get("issued_books", [])
+    entry = None
+    entry_idx = None
+    for i, rec in enumerate(issued):
+        if rec.get("reader") == reader_name:
+            entry = rec
+            entry_idx = i
+            break
+
+    if entry is None:
         return "Спочатку має бути видача книги"
 
-    book_finally = [issue_date, return_date]
-
     if extend:
-        month += 3
-        while month > 12:
-            month -= 12
-            year += 1
-        return_date = f"{day}.{month}.{year}"
-        book_finally = [issue_date, return_date]
-        return "Новий термін повернення: " + str(book_finally)
+        # Продовжуємо від поточної дати повернення
+        parts = entry["return_date"].split(".")
+        d, m, y = int(parts[0]), int(parts[1]), int(parts[2])
+        m += 3
+        while m > 12:
+            m -= 12
+            y += 1
+        new_return = f"{d}.{m}.{y}"
+        data["issued_books"][entry_idx]["return_date"] = new_return
+        json_a_d_c_base()
+        return f"Книга: {entry['book']}\nНовий термін повернення: {new_return}"
     else:
-        return "Повернення без змін: " + str(book_finally)
+        # Повернення — видаляємо запис
+        data["issued_books"].pop(entry_idx)
+        json_a_d_c_base()
+        return f"Книга '{entry['book']}' повернена. Дата видачі: {entry['issue_date']}"
 
 
 # Блок №2. Вхід
@@ -257,39 +274,41 @@ def function_librarian_card(reader_card):
 
 
 # Блок №4.3. Бібліотекар "Реєстрація читача"
-def function_librarian_register_reader(name, surname, father, email, phone, birth, limit, login, password, confirm_password):
+def function_librarian_register_reader(name, surname, father, email, phone, birth, ticket, login, password, confirm_password):
     reader_key = f"{name}-{surname}-{father}".title()
 
     if reader_key in data["dictionary_reader"]:
         return "Такий читач вже існує!"
 
-    login_exists = False
-    for reader_data in data["dictionary_reader"].values():
-        if reader_data["login"] == login:
-            login_exists = True
-            break
-
-    if login_exists:
+    if login in data["login_password"]:
         return "Такий логін вже використовується!"
 
-    elif password != confirm_password:
+    if password != confirm_password:
         return "Паролі не співпадають!"
 
-    else:
-        new_ticket = str(len(data["dictionary_reader"]) + 1)
+    if not (7 <= len(login) <= 15):
+        return "Логін має бути від 7 до 15 символів!"
 
-        data["dictionary_reader"][reader_key] = {
-            "ticket_number": new_ticket,
-            "mail": email,
-            "tel": phone,
-            "date_of_birth": birth,
-            "limit": int(limit),
-            "login": login,
-            "password": fast_hash(password)
-        }
+    if not (6 <= len(password) <= 10):
+        return "Пароль має бути від 6 до 10 символів!"
 
-        json_a_d_c_base()
-        return "Успішна реєстрація"
+    data["dictionary_reader"][reader_key] = {
+        "ticket_number": ticket,
+        "mail": email,
+        "tel": phone,
+        "date_of_birth": birth,
+        "limit": 3,
+        "login": login
+    }
+
+    data["login_password"][login] = {
+        "password": fast_hash(password),
+        "role": "reader",
+        "reader_name": reader_key
+    }
+
+    json_a_d_c_base()
+    return "Успішна реєстрація"
 
 
 # Блок №4.4. Бібліотекар "Видача книги"
@@ -309,18 +328,31 @@ def function_librarian_issue(book_name, reader_name, issue_date_input):
             month = int(date_parts[1])
             year = int(date_parts[2])
 
-            month += 3
-            while month > 12:
-                month -= 12
-                year += 1
+            ret_month = month + 3
+            ret_year = year
+            while ret_month > 12:
+                ret_month -= 12
+                ret_year += 1
 
-            return_date = f"{day}.{month}.{year}"
+            return_date = f"{day}.{ret_month}.{ret_year}"
             issue_date = issue_date_input
 
             book_finally.append(issue_date)
             book_finally.append(return_date)
 
             book_library.append(book_finally)
+
+            # Зберігаємо у JSON щоб читач бачив видачу після перезапуску
+            if "issued_books" not in data:
+                data["issued_books"] = []
+            data["issued_books"].append({
+                "book": book_name,
+                "reader": reader_name,
+                "issue_date": issue_date,
+                "return_date": return_date
+            })
+            json_a_d_c_base()
+
             return "Книга видана: " + str(book_finally)
 
         else:
@@ -332,8 +364,9 @@ def function_librarian_issue(book_name, reader_name, issue_date_input):
 
 # Блок №4.5. Бібліотекар "Видані екземпляри"
 def function_librarian_issued():
-    if book_library:
-        return book_library
+    issued = data.get("issued_books", [])
+    if issued:
+        return [[r["book"], r["reader"], r["issue_date"], r["return_date"]] for r in issued]
     else:
         return "Немає виданих книг"
 
