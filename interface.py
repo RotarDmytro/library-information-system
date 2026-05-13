@@ -759,7 +759,7 @@ class App:
         def open_by_type(self):
             top = tk.Toplevel(self.root)
             top.title("Пошук за типом")
-            top.geometry("400x250")
+            top.geometry("400x280")
             top.resizable(False, False)
             ttk.Label(top, text="Тип:").place(x=20, y=20)
             combo_type = ttk.Combobox(top, values=["default", "action", "new", "hot"], state="readonly", width=27)
@@ -772,7 +772,7 @@ class App:
             entry_year = ttk.Entry(top, width=30)
             entry_year.place(x=130, y=110)
             result_label = ttk.Label(top, text="", wraplength=360)
-            result_label.place(x=20, y=160)
+            result_label.place(x=20, y=180)
             def do_search():
                 res = function_reader_by_type(combo_type.get(), entry_book.get().strip(), entry_year.get().strip())
                 result_label.config(text=str(res))
@@ -783,13 +783,13 @@ class App:
         def open_by_index(self):
             top = tk.Toplevel(self.root)
             top.title("Пошук за індексом")
-            top.geometry("400x150")
+            top.geometry("400x180")
             top.resizable(False, False)
             ttk.Label(top, text="Індекс:").place(x=20, y=30)
             entry = ttk.Entry(top, width=30)
             entry.place(x=130, y=30)
             result_label = ttk.Label(top, text="", wraplength=360)
-            result_label.place(x=20, y=110)
+            result_label.place(x=20, y=140)
             def do_search():
                 res = function_reader_by_index(entry.get().strip())
                 result_label.config(text=str(res))
@@ -839,13 +839,13 @@ class App:
             ttk.Button(top, text="Повернути", width=14, command=do_return).place(x=50, y=45)
             ttk.Button(top, text="Продовжити (+3 міс)", width=20, command=do_extend).place(x=200, y=45)
 
-# Створення функції запуску
+# ПОЯСНЕННЯ. Створення функції запуску
 def start():
     root = tb.Window(themename="flatly")
     _set_icon(root)
     app = App.Exit(root)
     root.mainloop()
 
-# Захист від випадкового імпорту і виклик 
+# ПОЯСНЕННЯ. Захист від випадкового імпорту і виклик 
 if __name__ == '__main__':
     start()
