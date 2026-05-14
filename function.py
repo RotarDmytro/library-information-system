@@ -342,7 +342,7 @@ def function_librarian_issue(book_name, reader_name, issue_date_input):
 
             book_library.append(book_finally)
 
-            # Зберігаємо у JSON щоб читач бачив видачу після перезапуску
+            # ПОЯСНЕННЯ. Зберігаємо у JSON щоб читач бачив видачу після перезапуску
             if "issued_books" not in data:
                 data["issued_books"] = []
             data["issued_books"].append({
@@ -587,6 +587,16 @@ def fast_hash(password):
 # Блок №8.1. Підключення json
 def json_connect_base():
     global data, book_character_choose
+
+    '''
+        ПОЯСНЕННЯ. 
+        Створення захищеної змінної, яка містить в собі логічний вираз:
+        1. Отримання шляху до файлу, неважливо чи відносного, чи абсолютного
+        2. Повернення абсолютного шляху, навіть якщо він є відносним
+        3. Повернення папки, де знаходиться файл
+        4. Об'єднання папки та бажаного файлу
+    '''
+
     _path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'base.json')
     with open(_path, encoding='utf-8') as f:
         data = json.load(f)
